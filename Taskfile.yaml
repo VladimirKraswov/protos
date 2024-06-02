@@ -1,0 +1,15 @@
+version: "3"
+
+# Список команд которые утилита будет выполнять
+tasks:
+  # Первая команда это generate - которая будет генерировать протофайлы при вводе в терминал
+  # task generate
+  generate:
+    # Вместо generate можем просто gen
+    aliases:
+      - gen
+    # Описание команды
+    desc: "Generate code from proto files"
+    # Сама команда
+    cmds:
+      - protoc -I proto proto/sso/sso.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go --go-grpc_opt=paths=source_relative
